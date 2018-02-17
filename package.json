@@ -1,0 +1,11 @@
+{
+  "name": "selektion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "Andre L Rosot",
+  "license": "MIT"
+}
