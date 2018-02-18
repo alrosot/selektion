@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="angular/angular.js"></script>
+    <script src="selektion.js"></script>
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+    <script defer src="fontawesome/fontawesome-all.min.js"></script>
+    <title>Selektion</title>
+</head>
+<body ng-app="selApp" class="ng-cloak">
+<div class="container-fluid">
+    <div ng-controller="SelektionController" id="selektionController">
+        <div class="row">
+            <img ng-src="services/view/{{currentImage}}"/>
+        </div>
+
+
+        <div class="row">
+            <div class="col" ng-repeat="file in nextImages">
+                <center>
+                    <img ng-src="services/view/{{file}}" width="200px">
+                </center>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="jquery/jquery.slim.min.js"></script>
+<script src="popper/popper.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+
+
+</body>
+</html>
