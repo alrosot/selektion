@@ -12,7 +12,7 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
     $scope.currentImage = undefined;
     $scope.nextImages = [];
 
-    $http.get('services/list').then(function (res) {
+    $http.get('services/list/1').then(function (res) {
         var files = res.data;
         if (files.length > 0) {
             $scope.files = files;
