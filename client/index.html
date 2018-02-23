@@ -19,7 +19,14 @@
     <div ng-controller="SelektionController" id="selektionController">
         <div class="row">
             <div class="col-md-3">
-                {{albums}}
+                <div ng-repeat="(key, pictures) in albums">
+                    <div class="card" ng-show="pictures.length >0 ">
+                        <div class="card-body">
+                            <h5 class="card-title">{{key}} <input ng-model="name[key]"/></h5>
+                            <img ng-repeat="picture in pictures" ng-src="services/view/{{picture}}" width="50px"/>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-9">
                 <img ng-src="services/view/{{currentImage}}"/>
