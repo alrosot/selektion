@@ -5,8 +5,12 @@ const imageCollections = require('./image-collections');
 const sharp = require('sharp');
 
 
-router.get('/list/:collection', function (req, res) {
+router.get('/:collection/list', function (req, res) {
     res.json(imageCollections.get(req.params.collection).keys);
+});
+
+router.get('/:collection/action', function (req, res) {
+    res.json(imageCollections.get(req.params.collection).actions);
 });
 
 router.get('/view/:imageHash', function (req, res) {

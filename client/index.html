@@ -24,6 +24,12 @@
                         <div class="card-body">
                             <h5 class="card-title">{{key}} <input ng-model="name[key]"/></h5>
                             <img ng-repeat="picture in pictures" ng-src="services/view/{{picture}}" width="50px"/>
+                            <select>
+                                <option ng-repeat="action in actions">
+                                    {{action.label}}
+                                </option>
+                            </select>
+
                         </div>
                     </div>
                 </div>

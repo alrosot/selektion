@@ -6,6 +6,7 @@ var path = require("path");
 var collections = [{
     key: 1,
     name: "Test Images",
+    actions: [{key: "download", label: "Download as zip file"}],
     root: "test/imgsamples"
 }];
 

@@ -8,19 +8,27 @@ var selApp = angular.module('selApp', [])
 
 selApp.controller('SelektionController', function SelektionController($scope, $http, $timeout) {
     $scope.files = [];
+    $scope.actions = [];
     $scope.albums = {};
     var imgIndex = undefined;
     $scope.currentImage = undefined;
     $scope.nextImages = [];
+    $scope.imageCollections = 1;
 
-    $http.get('services/list/1').then(function (res) {
+    $http.get('services/' + $scope.imageCollections + '/list').then(function (res) {
         var files = res.data;
         if (files.length > 0) {
             $scope.files = files;
-
             $timeout(function () {
                 $scope.refreshCarrousel(0);
             });
+        }
+    });
+
+    $http.get('services/' + $scope.imageCollections + '/action').then(function (res) {
+        var files = res.data;
+        if (files.length > 0) {
+            $scope.actions = files;
         }
     });
 
