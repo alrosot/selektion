@@ -13,10 +13,7 @@
   "devDependencies": {
     "chai": "^2.1.1",
     "gulp": "^3.9.1",
-    "gulp-ng-annotate": "^2.1.0",
     "gulp-nodemon": "^2.2.1",
-    "gulp-uglify-es": "^1.0.0",
-    "gulp-util": "^3.0.8",
     "mocha": "^2.2.1",
     "nyc": "^11.5.0",
     "proxyquire": "^1.4.0",
