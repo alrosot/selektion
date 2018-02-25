@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <script src="angular/angular.js"></script>
+    <script src="file-saver/FileSaver.js"></script>
     <script src="selektion.js"></script>
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
@@ -24,12 +25,14 @@
                         <div class="card-body">
                             <h5 class="card-title">{{key}} <input ng-model="name[key]"/></h5>
                             <img ng-repeat="picture in pictures" ng-src="services/view/{{picture}}" width="50px"/>
-                            <select>
-                                <option ng-repeat="action in actions">
+                            <select ng-model="selectedAction[key]">
+                                <option ng-repeat="action in actions" ng-value="action.key">
                                     {{action.label}}
                                 </option>
                             </select>
-
+                            <button type="button" class="btn btn-primary"
+                                    ng-click="executeAction(key, selectedAction[key])">Go!
+                            </button>
                         </div>
                     </div>
                 </div>

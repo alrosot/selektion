@@ -41,6 +41,32 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
         return album;
     };
 
+    $scope.executeAction = function (albumId, action) {
+        $http({
+            url: '/services/' + $scope.imageCollections + '/action/' + action,
+            method: 'POST',
+            responseType: 'arraybuffer',
+            data: {
+                'selected': $scope.albums[albumId.toString()]
+            },
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/zip, application/octet-stream'
+            }
+        }).then(function (res) {
+            //TODO these should be taken from the response headers
+            let contentType = 'application/zip';
+            let fileName = 'imnotazipfile.txt';
+
+            var blob = new Blob([res.data], {
+                type: contentType
+            });
+            saveAs(blob, fileName);
+        }, function () {
+            //Some error log
+        });
+    };
+
     $scope.setAlbum = function (albumId) {
         var album = $scope.getAlbum(albumId);
         var indexOf = album.indexOf($scope.currentImage);

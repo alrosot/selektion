@@ -13,6 +13,8 @@ app.use('/bootstrap', express.static('node_modules/bootstrap/dist'));
 
 app.use('/jquery', express.static('node_modules/jquery/dist'));
 
+app.use('/file-saver', express.static('node_modules/file-saver'));
+
 app.use('/popper', express.static('node_modules/popper.js/dist'));
 
 app.listen(process.env.PORT || 3000, function () {
