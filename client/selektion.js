@@ -1,3 +1,10 @@
+function getFileNameFromHttpResponse(httpResponse) {
+    var contentDispositionHeader = httpResponse.headers('Content-Disposition');
+    var result = contentDispositionHeader.split(';')[1].trim().split('=')[1];
+    return result.replace(/"/g, '');
+}
+
+
 var selApp = angular.module('selApp', [])
     .config(function () {
         angular.element(document).bind('keyup', function (e) {
@@ -54,14 +61,12 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
                 'Accept': 'application/zip, application/octet-stream'
             }
         }).then(function (res) {
-            //TODO these should be taken from the response headers
-            let contentType = 'application/zip';
-            let fileName = 'imnotazipfile.txt';
+            let contentType = res.headers('Content-Type');
 
             var blob = new Blob([res.data], {
                 type: contentType
             });
-            saveAs(blob, fileName);
+            saveAs(blob, getFileNameFromHttpResponse(res));
         }, function () {
             //Some error log
         });

@@ -28,6 +28,7 @@ collections.forEach(collection => {
             collection.keys = Array.from(map.keys());
         });
 });
+console.log("All files indexed")
 
 module.exports.get = function (key) {
     for (var i = 0; i < collections.length; i++) {
