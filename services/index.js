@@ -17,7 +17,7 @@ router.get('/:collection/action', function (req, res) {
 });
 
 
-//TODO actions could be generified
+//TODO actions could be generified. And actions should be enforced per collection
 router.post('/:collection/action/download', function (req, res) {
 
     console.log('Retrieving images: ' + JSON.stringify(req.body));
