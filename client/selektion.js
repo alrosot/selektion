@@ -20,24 +20,31 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
     var imgIndex = undefined;
     $scope.currentImage = undefined;
     $scope.nextImages = [];
-    $scope.imageCollections = 1;
+    $scope.imageCollection = -1;
+    $scope.imageCollections = [];
 
-    $http.get('services/' + $scope.imageCollections + '/list').then(function (res) {
-        var files = res.data;
-        if (files.length > 0) {
-            $scope.files = files;
-            $timeout(function () {
-                $scope.refreshCarrousel(0);
-            });
-        }
+    $http.get('services/collections').then(function (res) {
+        $scope.imageCollections = res.data;
     });
 
-    $http.get('services/' + $scope.imageCollections + '/action').then(function (res) {
-        var files = res.data;
-        if (files.length > 0) {
-            $scope.actions = files;
-        }
-    });
+    $scope.changeCollection = function () {
+        $http.get('services/' + $scope.imageCollection + '/list').then(function (res) {
+            var files = res.data;
+            if (files.length > 0) {
+                $scope.files = files;
+                $timeout(function () {
+                    $scope.refreshCarrousel(0);
+                });
+            }
+        });
+
+        $http.get('services/' + $scope.imageCollection + '/action').then(function (res) {
+            var files = res.data;
+            if (files.length > 0) {
+                $scope.actions = files;
+            }
+        });
+    };
 
     $scope.getAlbum = function (albumId) {
         var album = $scope.albums[albumId];
@@ -50,7 +57,7 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
 
     $scope.executeAction = function (albumId, action) {
         $http({
-            url: '/services/' + $scope.imageCollections + '/action/' + action,
+            url: '/services/' + $scope.imageCollection + '/action/' + action,
             method: 'POST',
             responseType: 'arraybuffer',
             data: {

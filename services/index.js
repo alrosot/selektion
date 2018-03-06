@@ -16,6 +16,15 @@ router.get('/:collection/action', function (req, res) {
     res.json(imageCollections.get(req.params.collection).actions);
 });
 
+router.get('/collections', function (req, res) {
+    res.json(imageCollections.getAll().map(value => {
+            return {
+                key: value.key,
+                name: value.name
+            }
+        }
+    ));
+});
 
 //TODO actions could be generified. And actions should be enforced per collection
 router.post('/:collection/action/download', function (req, res) {

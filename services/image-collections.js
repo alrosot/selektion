@@ -67,7 +67,7 @@ module.exports.get = function (key) {
             return collections[i];
         }
     }
-}
+};
 
 module.exports.getAll = function () {
     return collections;

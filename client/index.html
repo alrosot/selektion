@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="shortcut icon" href="icon.png" type="image/x-icon">
 
@@ -18,6 +18,16 @@
 <body ng-app="selApp" class="ng-cloak">
 <div class="container-fluid">
     <div ng-controller="SelektionController" id="selektionController">
+        <div class="row">
+            <select ng-model="imageCollection" ng-change="changeCollection()">
+                <option ng-value="-1" ng-show="imageCollection === -1">
+                    -- Please select an image collection --
+                </option>
+                <option ng-repeat="collection in imageCollections" ng-value="collection.key">
+                    {{collection.name}}
+                </option>
+            </select>
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <div ng-repeat="(key, pictures) in albums">
