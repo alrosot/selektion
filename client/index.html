@@ -19,7 +19,7 @@
 <div class="container-fluid">
     <div ng-controller="SelektionController" id="selektionController">
         <div class="row">
-            <select ng-model="imageCollection" ng-change="changeCollection()">
+            <select ng-model="imageCollection" id="imageCollectionSelect" ng-change="changeCollection()">
                 <option ng-value="-1" ng-show="imageCollection === -1">
                     -- Please select an image collection --
                 </option>
@@ -47,8 +47,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
-                <img ng-src="services/view/{{currentImage}}"/>
+            <div class="col-md-8">
+                <img ng-src="services/view/{{currentImage}}" style="max-width:100%"/>
+            </div>
+
+            <div class="col-md-1" ng-show="currentImageAlbums.length > 0">
+                Image's albums:
+                <span ng-repeat="album in currentImageAlbums">
+                     {{album}}
+                </span>
             </div>
         </div>
         <div class="row">

@@ -34,6 +34,7 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
                 $scope.files = files;
                 $timeout(function () {
                     $scope.refreshCarrousel(0);
+                    document.getElementById("imageCollectionSelect").blur();
                 });
             }
         });
@@ -44,6 +45,18 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
                 $scope.actions = files;
             }
         });
+    };
+
+    $scope.getAlbumsForImage = function (imageId) {
+        var albums = [];
+
+        for (var key in $scope.albums) {
+            if ($scope.albums[key].indexOf(imageId) >= 0) {
+                albums.push(key)
+            }
+        }
+        console.log(albums);
+        return albums;
     };
 
     $scope.getAlbum = function (albumId) {
@@ -88,7 +101,13 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
             album.push($scope.currentImage);
         }
 
+        $scope.updateAlbumsForCurrentImage();
+
         $scope.$apply();
+    };
+
+    $scope.updateAlbumsForCurrentImage = function () {
+        $scope.currentImageAlbums = $scope.getAlbumsForImage($scope.currentImage);
     };
 
     $scope.refreshCarrousel = function (newIndex) {
@@ -99,6 +118,8 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
             for (var i = imgIndex + 1; i < imgIndex + 6 && i < $scope.files.length; i++) {
                 $scope.nextImages.push($scope.files[i]);
             }
+
+            $scope.updateAlbumsForCurrentImage();
 
             $scope.$apply();
         }
@@ -128,4 +149,5 @@ selApp.controller('SelektionController', function SelektionController($scope, $h
         }
     };
 
-});
+})
+;
