@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <img ng-src="services/view/{{currentImage}}" style="max-width:100%"/>
+            <div class="col-md-8" style="max-height: 600px">
+                <img ng-src="services/view/{{currentImage}}" style="max-width:100%;max-height: 100%"/>
             </div>
 
             <div class="col-md-1" ng-show="currentImageAlbums.length > 0">
@@ -59,10 +59,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col" ng-repeat="file in nextImages">
-                <center>
-                    <img ng-src="services/view/{{file}}" width="200px">
-                </center>
+            <div class="col-lg-12 card">
+                <div class="card-header">
+                    Next images
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col" ng-repeat="file in nextImages">
+
+                            <center>
+                                <img ng-src="services/view/{{file}}" width="200px">
+                            </center>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
