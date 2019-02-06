@@ -12,15 +12,15 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^2.1.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-nodemon": "^2.2.1",
-    "mocha": "^2.2.1",
+    "mocha": "^5.2.0",
     "nyc": "^11.5.0",
     "proxyquire": "^1.4.0",
     "sinon": "^1.14.0"
   },
   "dependencies": {
-    "angular": "^1.6.8",
+    "angular": "^1.7.7",
     "archiver": "^2.1.1",
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
