@@ -7,9 +7,9 @@ var collectionId = 0;
 
 var collections = [{
     key: ++collectionId,
-    name: "Test Images",
+    name: "Mounted images",
     actions: [{key: "download", label: "Download as zip file"}],
-    root: "test/imgsamples"
+    root: "/images"
 }];
 
 const allowedExtensions = ["jpg", "jpeg", "bmp", "png", "gif"];
