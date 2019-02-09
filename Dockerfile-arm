@@ -1,3 +1,6 @@
+FROM docker.io/project31/aarch64-alpine-qemu:3.5
+RUN [ “cross-build-start” ]
+
 FROM arm32v6/node:8-alpine
 
 RUN npm install sharp
@@ -19,3 +22,5 @@ COPY . .
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
+
+RUN [ “cross-build-end” ]
