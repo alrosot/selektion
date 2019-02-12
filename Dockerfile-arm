@@ -1,26 +1,28 @@
-FROM docker.io/project31/aarch64-alpine-qemu:3.5
-RUN [ “cross-build-start” ]
+FROM arm32v6/alpine
 
-FROM arm32v6/node:8-alpine
+RUN apk add vips-dev fftw-dev build-base --update-cache \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/testing/ \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/main
 
-RUN npm install sharp
+RUN apk add --update \
+  --repository http://dl-3.alpinelinux.org/alpine/edge/testing \
+  vips-tools \
+  nodejs nodejs-npm \
+    python \
+    python-dev \
+    py-pip \
+    build-base \
+    vips \
+  && pip install virtualenv \
+  && rm -rf /var/cache/apk/*
 
 # Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies to speed up development
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
-RUN npm install
-# If you are building your code for production
-# RUN npm install --only=production
-
 # Bundle app source
 COPY . .
 
-EXPOSE 3000
-CMD [ "npm", "start" ]
+RUN npm install
 
-RUN [ “cross-build-end” ]
+EXPOSE 3000
+CMD [ "node", "app.js" ]
