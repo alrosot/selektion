@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Mounted images",
+    "actions": [
+      {
+        "key": "download",
+        "label": "Download as zip file"
+      }
+    ],
+    "root": "/images",
+    "exclude": ".@__thumb"
+  }
+]

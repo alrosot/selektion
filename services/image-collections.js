@@ -5,16 +5,13 @@ var path = require("path");
 
 var collectionId = 0;
 
-var collections = [{
-    key: ++collectionId,
-    name: "Mounted images",
-    actions: [{key: "download", label: "Download as zip file"}],
-    root: "/images"
-}];
+var collections = require(process.env.COLLECTIONS || './default-collections.json');
 
 const allowedExtensions = ["jpg", "jpeg", "bmp", "png", "gif"];
 
 collections.forEach(collection => {
+
+    collection.key =  ++collectionId;
 
     dir.files(collection.root,
         function (err, files) {
@@ -26,7 +23,8 @@ collections.forEach(collection => {
             var paths = files.map(file => path.resolve(file));
             var map = new Map();
             paths.forEach(filePath => {
-                if (allowedExtensions.indexOf(filePath.split('.').pop().toLocaleLowerCase()) >= 0) {
+                if (allowedExtensions.indexOf(filePath.split('.').pop().toLocaleLowerCase()) >= 0
+                    && filePath.indexOf(collection.exclude) < 0) {
                     map.set(md5(filePath), filePath);
                     var fileName = path.basename(filePath);
                     if (scannedNames.has(fileName)) {
@@ -45,7 +43,6 @@ collections.forEach(collection => {
 
             if (duplicateFilesByName.size > 0) {
                 console.log("Found some files with the same name");
-                duplicateFilesByName.forEach(value => console.log(value));
 
                 var fileList = new Map();
                 duplicateFilesByName.forEach(value => fileList.set(md5(value), value));
