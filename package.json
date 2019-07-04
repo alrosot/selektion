@@ -6,7 +6,9 @@
   "scripts": {
     "test": "nyc mocha",
     "prestart": "gulp",
-    "start": "node app.js"
+    "start": "node app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Andre L Rosot",
   "license": "MIT",
@@ -33,6 +35,8 @@
     "node-dir": "^0.1.17",
     "popper.js": "^1.13.0",
     "request": "^2.83.0",
-    "sharp": "^0.21.3"
-  }
+    "sharp": "^0.21.3",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
