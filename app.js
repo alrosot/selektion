@@ -1,4 +1,4 @@
-
+const path = require('path');
 const express = require('express');
 const app = express();
 
@@ -16,6 +16,12 @@ app.use('/jquery', express.static('node_modules/jquery/dist'));
 app.use('/file-saver', express.static('node_modules/file-saver'));
 
 app.use('/popper', express.static('node_modules/popper.js/dist'));
+
+app.use(express.static(path.join(__dirname, 'tomato/build')));
+
+app.get('/tomato', function(req, res) {
+    res.sendFile(path.join(__dirname, 'tomato/build', 'index.html'));
+});
 
 var server = app.listen(process.env.PORT || 3000, function () {
         console.log('Selektion up and running!')
