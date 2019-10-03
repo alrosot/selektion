@@ -16,3 +16,8 @@ patch:
         patched: '2019-07-03T23:31:19.993Z'
     - archiver > zip-stream > archiver-utils > lodash:
         patched: '2019-07-03T23:31:19.993Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-03T23:31:17.959Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-03T23:31:17.959Z'
