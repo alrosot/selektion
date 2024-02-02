@@ -22,7 +22,7 @@
     "sinon": "^1.14.0"
   },
   "dependencies": {
-    "angular": "^1.7.7",
+    "angular": "^1.8.3",
     "archiver": "^2.1.1",
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
@@ -34,7 +34,7 @@
     "memory-cache": "^0.2.0",
     "node-dir": "^0.1.17",
     "popper.js": "^1.13.0",
-    "request": "^2.83.0",
+    "request": "^2.88.2",
     "sharp": "^0.30.5",
     "snyk": "^1.290.1"
   },
